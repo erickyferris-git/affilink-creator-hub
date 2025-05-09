@@ -4,7 +4,7 @@ import { Influencer } from '../types';
 import { Avatar } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Copy, Link } from 'lucide-react';
+import { Copy, Link, Shopify } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
@@ -41,7 +41,9 @@ const InfluencerCard: React.FC<InfluencerCardProps> = ({ influencer }) => {
   const copyToClipboard = () => {
     if (influencer.affiliateLink) {
       navigator.clipboard.writeText(influencer.affiliateLink);
-      toast.success(`Copied affiliate link for ${influencer.name}`);
+      toast.success(`Copied affiliate link for ${influencer.name}`, {
+        description: "The link has been copied to your clipboard",
+      });
     }
   };
 
@@ -81,9 +83,12 @@ const InfluencerCard: React.FC<InfluencerCardProps> = ({ influencer }) => {
                   variant="ghost" 
                   size="icon" 
                   onClick={copyToClipboard}
-                  className="h-8 w-8 rounded-full copy-button"
+                  className="h-8 w-8 rounded-full copy-button flex items-center justify-center"
                 >
-                  <Link className="h-4 w-4 text-primary" />
+                  <div className="flex space-x-1">
+                    <Shopify className="h-4 w-4 text-primary" />
+                    <Link className="h-4 w-4 text-primary" />
+                  </div>
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
