@@ -1,4 +1,3 @@
-
 export interface Influencer {
   id: string;
   name: string;
@@ -11,6 +10,7 @@ export interface Influencer {
     averageLikes: number;
   };
   affiliateLink?: string;
+  revenue?: number;
 }
 
 export interface SocialChannel {

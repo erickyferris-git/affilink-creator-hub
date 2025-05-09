@@ -1,9 +1,10 @@
+
 import React from 'react';
 import { Influencer } from '../types';
 import { Avatar } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Copy, Link, Tag } from 'lucide-react';
+import { DollarSign, Link, Tag } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
@@ -20,6 +21,14 @@ const InfluencerCard: React.FC<InfluencerCardProps> = ({ influencer }) => {
       return (num / 1000).toFixed(1) + 'K';
     }
     return num.toString();
+  };
+
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat('en-US', { 
+      style: 'currency', 
+      currency: 'USD',
+      maximumFractionDigits: 0 
+    }).format(amount);
   };
 
   const getSocialIcon = (type: string) => {
@@ -117,6 +126,13 @@ const InfluencerCard: React.FC<InfluencerCardProps> = ({ influencer }) => {
             <span className="text-xs text-muted-foreground">Avg. Likes</span>
           </div>
         </div>
+        
+        {influencer.revenue !== undefined && (
+          <div className="mt-4 flex items-center justify-center bg-green-50 py-2 rounded-md">
+            <DollarSign className="h-4 w-4 text-green-600 mr-1" />
+            <span className="text-sm font-medium text-green-700">{formatCurrency(influencer.revenue)} generated</span>
+          </div>
+        )}
         
         <div className="mt-4 flex flex-wrap gap-1">
           {influencer.socialChannels.map((channel, idx) => (

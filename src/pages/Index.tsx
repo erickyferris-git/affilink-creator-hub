@@ -15,6 +15,11 @@ const Index = () => {
   const [currentProgram, setCurrentProgram] = useState('');
   const [formData, setFormData] = useState<AffiliateFormData | null>(null);
 
+  const generateRandomRevenue = () => {
+    // Generate random revenue between $500 and $10,000
+    return Math.floor(Math.random() * 9500) + 500;
+  };
+
   const handleEnableAffiliate = () => {
     setIsFormOpen(true);
   };
@@ -30,7 +35,7 @@ const Index = () => {
       setCurrentProgram(program.name);
     }
     
-    // Generate affiliate links for all influencers
+    // Generate affiliate links and random revenue for all influencers
     const updatedInfluencers = influencersList.map(influencer => {
       const program = programs.find(p => p.id === data.programId);
       if (!program) return influencer;
@@ -49,6 +54,7 @@ const Index = () => {
       return {
         ...influencer,
         affiliateLink,
+        revenue: generateRandomRevenue(),
       };
     });
     
