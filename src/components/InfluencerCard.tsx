@@ -1,10 +1,9 @@
-
 import React from 'react';
 import { Influencer } from '../types';
 import { Avatar } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Copy, Link, Shopify } from 'lucide-react';
+import { Copy, Link, Tag } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
@@ -86,7 +85,7 @@ const InfluencerCard: React.FC<InfluencerCardProps> = ({ influencer }) => {
                   className="h-8 w-8 rounded-full copy-button flex items-center justify-center"
                 >
                   <div className="flex space-x-1">
-                    <Shopify className="h-4 w-4 text-primary" />
+                    <Tag className="h-4 w-4 text-primary" />
                     <Link className="h-4 w-4 text-primary" />
                   </div>
                 </Button>

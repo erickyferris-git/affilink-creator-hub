@@ -2,7 +2,7 @@
 import React from 'react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
-import { Edit, Shopify } from 'lucide-react';
+import { Edit, Tag } from 'lucide-react';
 
 interface AffiliateStatusProps {
   onEditClick: () => void;
@@ -14,7 +14,7 @@ const AffiliateStatus: React.FC<AffiliateStatusProps> = ({ onEditClick, programN
     <Alert className="bg-purple-50 border-purple-200 mb-6">
       <div className="flex justify-between items-center">
         <div className="flex items-center">
-          <Shopify className="h-5 w-5 mr-2 text-purple-700" />
+          <Tag className="h-5 w-5 mr-2 text-purple-700" />
           <div>
             <AlertTitle className="text-purple-700">Affiliate Links Enabled</AlertTitle>
             <AlertDescription className="text-purple-600">
